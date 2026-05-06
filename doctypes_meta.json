@@ -1,0 +1,2092 @@
+{
+  "Operation Order": [
+    {
+      "fieldname": "stop_reason",
+      "fieldtype": "Data",
+      "label": "Stop Reason",
+      "options": null
+    },
+    {
+      "fieldname": "cb_001",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "stopped_by",
+      "fieldtype": "Data",
+      "label": "Stopped By",
+      "options": null
+    },
+    {
+      "fieldname": "cb_002",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "stopped_on",
+      "fieldtype": "Datetime",
+      "label": "Stopped On",
+      "options": null
+    },
+    {
+      "fieldname": "stock_fulfillment_section",
+      "fieldtype": "Section Break",
+      "label": "Operations Dashboard",
+      "options": null
+    },
+    {
+      "fieldname": "fulfill_html",
+      "fieldtype": "HTML",
+      "label": "fulfill_html",
+      "options": "<p></p>"
+    },
+    {
+      "fieldname": "to_fulfill_qty",
+      "fieldtype": "Int",
+      "label": "To Fulfill Qty",
+      "options": null
+    },
+    {
+      "fieldname": "fulfilled_qty",
+      "fieldtype": "Int",
+      "label": "Fulfilled Qty",
+      "options": null
+    },
+    {
+      "fieldname": "is_fulfilled",
+      "fieldtype": "Check",
+      "label": "Is Fulfilled",
+      "options": null
+    },
+    {
+      "fieldname": "fulfillment_status",
+      "fieldtype": "Select",
+      "label": "Fulfillment Status",
+      "options": "Not Fulfilled\nPartially Fulfilled\nFully Fulfilled\nCan't Fulfill"
+    },
+    {
+      "fieldname": "fulfillment_doc",
+      "fieldtype": "Data",
+      "label": "Fulfillment Document",
+      "options": null
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Text",
+      "label": "Notes",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_10",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "plan_html",
+      "fieldtype": "HTML",
+      "label": "plan_html",
+      "options": "<p></p>"
+    },
+    {
+      "fieldname": "to_plan_qty",
+      "fieldtype": "Int",
+      "label": "To Plan Qty",
+      "options": null
+    },
+    {
+      "fieldname": "planned_qty",
+      "fieldtype": "Int",
+      "label": "Planned Qty",
+      "options": null
+    },
+    {
+      "fieldname": "plan_status",
+      "fieldtype": "Select",
+      "label": "Plan Status",
+      "options": "Not Planned\nPartially Planned\nFully Planned"
+    },
+    {
+      "fieldname": "column_break_33",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "delivery_html",
+      "fieldtype": "HTML",
+      "label": "delivery_html",
+      "options": "<p></p>"
+    },
+    {
+      "fieldname": "to_deliver_qty",
+      "fieldtype": "Int",
+      "label": "To Deliver Qty",
+      "options": null
+    },
+    {
+      "fieldname": "delivered_qty",
+      "fieldtype": "Int",
+      "label": "Delivered Qty",
+      "options": null
+    },
+    {
+      "fieldname": "is_delivered",
+      "fieldtype": "Check",
+      "label": "Is Delivered",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_status",
+      "fieldtype": "Select",
+      "label": "Delivery Status",
+      "options": "Not Delivered\nPartially Delivered\nFully Delivered"
+    },
+    {
+      "fieldname": "delivered_by",
+      "fieldtype": "Link",
+      "label": "Delivered By",
+      "options": "Delivery Agent"
+    },
+    {
+      "fieldname": "delivery_date",
+      "fieldtype": "Date",
+      "label": "Delivery Date",
+      "options": null
+    },
+    {
+      "fieldname": "cb01",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "return_plan_html",
+      "fieldtype": "HTML",
+      "label": "return_plan_html",
+      "options": "<p></p>"
+    },
+    {
+      "fieldname": "to_return_plan_qty",
+      "fieldtype": "Int",
+      "label": "To Return Plan Qty",
+      "options": null
+    },
+    {
+      "fieldname": "return_plan_qty",
+      "fieldtype": "Int",
+      "label": "Return Plan Qty",
+      "options": null
+    },
+    {
+      "fieldname": "return_plan_status",
+      "fieldtype": "Select",
+      "label": "Return Plan Status",
+      "options": "Not Planned\nPartially Planned\nFully Planned"
+    },
+    {
+      "fieldname": "column_break_18",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "collection_html",
+      "fieldtype": "HTML",
+      "label": "collection_html",
+      "options": "<p></p>"
+    },
+    {
+      "fieldname": "to_collect_qty",
+      "fieldtype": "Int",
+      "label": "To Collect Qty",
+      "options": null
+    },
+    {
+      "fieldname": "collected_qty",
+      "fieldtype": "Int",
+      "label": "Collected Qty",
+      "options": null
+    },
+    {
+      "fieldname": "collection_status",
+      "fieldtype": "Select",
+      "label": "Collection Status",
+      "options": "Not Collected\nPartially Collected\nFully Collected"
+    },
+    {
+      "fieldname": "column_break_27",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "return_html",
+      "fieldtype": "HTML",
+      "label": "return_html",
+      "options": "<p></p>"
+    },
+    {
+      "fieldname": "to_return_qty",
+      "fieldtype": "Int",
+      "label": "To Return Qty",
+      "options": null
+    },
+    {
+      "fieldname": "returned_qty",
+      "fieldtype": "Int",
+      "label": "Returned Qty",
+      "options": null
+    },
+    {
+      "fieldname": "return_status",
+      "fieldtype": "Select",
+      "label": "Return Status",
+      "options": "Not Returned\nPartially Returned\nFully Returned"
+    },
+    {
+      "fieldname": "return_doc",
+      "fieldtype": "Data",
+      "label": "Return Doc",
+      "options": null
+    },
+    {
+      "fieldname": "assignment_dashboard_section",
+      "fieldtype": "Section Break",
+      "label": "Assignment Dashboard",
+      "options": null
+    },
+    {
+      "fieldname": "rep_html",
+      "fieldtype": "HTML",
+      "label": "rep_html",
+      "options": "<p></p>"
+    },
+    {
+      "fieldname": "require_representative",
+      "fieldtype": "Check",
+      "label": "Require Representative",
+      "options": null
+    },
+    {
+      "fieldname": "representatives_assigned",
+      "fieldtype": "Check",
+      "label": "Representatives Assigned",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_47",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "operated_html",
+      "fieldtype": "HTML",
+      "label": "operated_html",
+      "options": "<p></p>"
+    },
+    {
+      "fieldname": "is_operated",
+      "fieldtype": "Check",
+      "label": "is_operated",
+      "options": null
+    },
+    {
+      "fieldname": "validation_information_section",
+      "fieldtype": "Section Break",
+      "label": "Validation Information",
+      "options": null
+    },
+    {
+      "fieldname": "is_validated",
+      "fieldtype": "Check",
+      "label": "Is Validated",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_8jj2i",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "validation_time",
+      "fieldtype": "Datetime",
+      "label": "Validation Time",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_vpki3",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "validated_by",
+      "fieldtype": "Link",
+      "label": "Validated By",
+      "options": "User"
+    },
+    {
+      "fieldname": "section_break_11",
+      "fieldtype": "Section Break",
+      "label": "Main Information",
+      "options": null
+    },
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company"
+    },
+    {
+      "fieldname": "branch",
+      "fieldtype": "Link",
+      "label": "Branch",
+      "options": "Branch"
+    },
+    {
+      "fieldname": "column_break_2",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "user_id",
+      "fieldtype": "Data",
+      "label": "User ID",
+      "options": null
+    },
+    {
+      "fieldname": "time_stamp",
+      "fieldtype": "Datetime",
+      "label": "Time Stamp",
+      "options": null
+    },
+    {
+      "fieldname": "order_primary_data_section",
+      "fieldtype": "Section Break",
+      "label": "Order Primary Data",
+      "options": null
+    },
+    {
+      "fieldname": "sales_person",
+      "fieldtype": "Link",
+      "label": "Sales Person",
+      "options": "Sales Person"
+    },
+    {
+      "fieldname": "wassenger_recipient",
+      "fieldtype": "Data",
+      "label": "Sales Cell Number",
+      "options": null
+    },
+    {
+      "fieldname": "operation_date_time",
+      "fieldtype": "Datetime",
+      "label": "Operation Date/Time",
+      "options": null
+    },
+    {
+      "fieldname": "deliver_before",
+      "fieldtype": "Datetime",
+      "label": "Deliver Before",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_11",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "hospital",
+      "fieldtype": "Link",
+      "label": "Hospital",
+      "options": "Customer"
+    },
+    {
+      "fieldname": "doctor",
+      "fieldtype": "Link",
+      "label": "Doctor",
+      "options": "Healthcare Practitioner"
+    },
+    {
+      "fieldname": "practitioner_name",
+      "fieldtype": "Data",
+      "label": "Doctor Name",
+      "options": null
+    },
+    {
+      "fieldname": "data_6v8gi",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "doctor_notes",
+      "fieldtype": "Small Text",
+      "label": "Doctor Notes",
+      "options": null
+    },
+    {
+      "fieldname": "operation_request",
+      "fieldtype": "Link",
+      "label": "Operation Request",
+      "options": "Operation Request"
+    },
+    {
+      "fieldname": "section_break_14",
+      "fieldtype": "Section Break",
+      "label": "Order Information",
+      "options": null
+    },
+    {
+      "fieldname": "order_type",
+      "fieldtype": "Link",
+      "label": "Order Type",
+      "options": "Order Type"
+    },
+    {
+      "fieldname": "representative",
+      "fieldtype": "Link",
+      "label": "Representative (Order Level)",
+      "options": "Representative"
+    },
+    {
+      "fieldname": "column_break_17",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description",
+      "options": null
+    },
+    {
+      "fieldname": "order_requirements_section",
+      "fieldtype": "Section Break",
+      "label": "Order Requirements",
+      "options": null
+    },
+    {
+      "fieldname": "group_selector",
+      "fieldtype": "Button",
+      "label": "Group Selector",
+      "options": null
+    },
+    {
+      "fieldname": "requirements",
+      "fieldtype": "Table",
+      "label": "Requirements",
+      "options": "Operation Order Requirement"
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Data",
+      "label": "Order Status",
+      "options": null
+    },
+    {
+      "fieldname": "removed_requirements_section",
+      "fieldtype": "Section Break",
+      "label": "Removed Requirements",
+      "options": null
+    },
+    {
+      "fieldname": "removed",
+      "fieldtype": "Table",
+      "label": "Removed Requirements",
+      "options": "Operation Order Removed Requirement"
+    },
+    {
+      "fieldname": "operation_order_items_section",
+      "fieldtype": "Section Break",
+      "label": "Operation Order Items",
+      "options": null
+    },
+    {
+      "fieldname": "direct_delivery_to_customer_warehouse",
+      "fieldtype": "Check",
+      "label": "Direct Delivery To Customer Warehouse",
+      "options": null
+    },
+    {
+      "fieldname": "items",
+      "fieldtype": "Table",
+      "label": "Items",
+      "options": "Operation Order Item"
+    },
+    {
+      "fieldname": "section_break_63",
+      "fieldtype": "Section Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "project",
+      "fieldtype": "Link",
+      "label": "Project",
+      "options": "Project"
+    },
+    {
+      "fieldname": "section_break_65",
+      "fieldtype": "Section Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "options": "Operation Order"
+    },
+    {
+      "fieldname": "notifications_signals_section",
+      "fieldtype": "Section Break",
+      "label": "Notifications Signals",
+      "options": null
+    },
+    {
+      "fieldname": "remind_delivery_managers",
+      "fieldtype": "Check",
+      "label": "remind_delivery_managers",
+      "options": null
+    }
+  ],
+  "Delivery Plan": [
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company"
+    },
+    {
+      "fieldname": "column_break_2",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "branch",
+      "fieldtype": "Link",
+      "label": "Branch",
+      "options": "Branch"
+    },
+    {
+      "fieldname": "section_break_4",
+      "fieldtype": "Section Break",
+      "label": "Order Fetching Filters",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_6",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "plan_date",
+      "fieldtype": "Date",
+      "label": "Plan Date",
+      "options": null
+    },
+    {
+      "fieldname": "operation_date_from",
+      "fieldtype": "Date",
+      "label": "Operation Date From",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_60",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "sort_by",
+      "fieldtype": "Select",
+      "label": "Sort By",
+      "options": "Hospital\nOperation Time"
+    },
+    {
+      "fieldname": "direction",
+      "fieldtype": "Select",
+      "label": "Direction",
+      "options": "\nDeliver\nReturn\nRedirect"
+    },
+    {
+      "fieldname": "operation_date_to",
+      "fieldtype": "Date",
+      "label": "Operation Date To",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_10",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "hospital",
+      "fieldtype": "Link",
+      "label": "Hospital",
+      "options": "Customer"
+    },
+    {
+      "fieldname": "column_break_14",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "case_type",
+      "fieldtype": "Link",
+      "label": "Case Type",
+      "options": "Case Type"
+    },
+    {
+      "fieldname": "stock_fulfillment",
+      "fieldtype": "Link",
+      "label": "Stock Fulfillment",
+      "options": "Stock Fulfillment"
+    },
+    {
+      "fieldname": "use_only_the_selected_stock_fulfillment",
+      "fieldtype": "Check",
+      "label": "Use Only The Selected Stock Fulfillment",
+      "options": null
+    },
+    {
+      "fieldname": "section_break_9",
+      "fieldtype": "Section Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "get_orders",
+      "fieldtype": "Button",
+      "label": "Get Orders",
+      "options": null
+    },
+    {
+      "fieldname": "orders",
+      "fieldtype": "Table",
+      "label": "Orders",
+      "options": "Delivery Plan Detail"
+    },
+    {
+      "fieldname": "section_break_19",
+      "fieldtype": "Section Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "orders_table",
+      "fieldtype": "HTML",
+      "label": "Orders Table",
+      "options": "<div id=\"orders_table\"></div>"
+    },
+    {
+      "fieldname": "test",
+      "fieldtype": "HTML",
+      "label": "Test",
+      "options": "<div id=\"test_table\"></div>"
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "options": "Delivery Plan"
+    }
+  ],
+  "Delivery Trip": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "options": "MAT-DT-.YYYY.-"
+    },
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company"
+    },
+    {
+      "fieldname": "column_break_2",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "email_notification_sent",
+      "fieldtype": "Check",
+      "label": "Initial Email Notification Sent",
+      "options": null
+    },
+    {
+      "fieldname": "section_break_3",
+      "fieldtype": "Section Break",
+      "label": "Delivery Details",
+      "options": null
+    },
+    {
+      "fieldname": "driver",
+      "fieldtype": "Link",
+      "label": "Driver",
+      "options": "Driver"
+    },
+    {
+      "fieldname": "driver_name",
+      "fieldtype": "Data",
+      "label": "Driver Name",
+      "options": null
+    },
+    {
+      "fieldname": "driver_email",
+      "fieldtype": "Data",
+      "label": "Driver Email",
+      "options": null
+    },
+    {
+      "fieldname": "driver_address",
+      "fieldtype": "Link",
+      "label": "Driver Address",
+      "options": "Address"
+    },
+    {
+      "fieldname": "total_distance",
+      "fieldtype": "Float",
+      "label": "Total Estimated Distance",
+      "options": null
+    },
+    {
+      "fieldname": "uom",
+      "fieldtype": "Link",
+      "label": "Distance UOM",
+      "options": "UOM"
+    },
+    {
+      "fieldname": "column_break_4",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "vehicle",
+      "fieldtype": "Link",
+      "label": "Vehicle",
+      "options": "Vehicle"
+    },
+    {
+      "fieldname": "departure_time",
+      "fieldtype": "Datetime",
+      "label": "Departure Time",
+      "options": null
+    },
+    {
+      "fieldname": "employee",
+      "fieldtype": "Link",
+      "label": "Employee",
+      "options": "Employee"
+    },
+    {
+      "fieldname": "delivery_service_stops",
+      "fieldtype": "Section Break",
+      "label": "Delivery Stops",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_stops",
+      "fieldtype": "Table",
+      "label": "Delivery Stop",
+      "options": "Delivery Stop"
+    },
+    {
+      "fieldname": "calculate_arrival_time",
+      "fieldtype": "Button",
+      "label": "Calculate Estimated Arrival Times",
+      "options": null
+    },
+    {
+      "fieldname": "optimize_route",
+      "fieldtype": "Button",
+      "label": "Optimize Route",
+      "options": null
+    },
+    {
+      "fieldname": "section_break_15",
+      "fieldtype": "Section Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nScheduled\nIn Transit\nCompleted\nCancelled"
+    },
+    {
+      "fieldname": "cb_more_info",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "options": "Delivery Trip"
+    }
+  ],
+  "Delivery Stop": [
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "label": "Customer",
+      "options": "Customer"
+    },
+    {
+      "fieldname": "address",
+      "fieldtype": "Link",
+      "label": "Address Name",
+      "options": "Address"
+    },
+    {
+      "fieldname": "locked",
+      "fieldtype": "Check",
+      "label": "Locked",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_6",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "customer_address",
+      "fieldtype": "Small Text",
+      "label": "Customer Address",
+      "options": null
+    },
+    {
+      "fieldname": "visited",
+      "fieldtype": "Check",
+      "label": "Visited",
+      "options": null
+    },
+    {
+      "fieldname": "order_information_section",
+      "fieldtype": "Section Break",
+      "label": "Order Information",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_note",
+      "fieldtype": "Link",
+      "label": "Delivery Note",
+      "options": "Delivery Note"
+    },
+    {
+      "fieldname": "cb_order",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "grand_total",
+      "fieldtype": "Currency",
+      "label": "Grand Total",
+      "options": null
+    },
+    {
+      "fieldname": "section_break_7",
+      "fieldtype": "Section Break",
+      "label": "Contact Information",
+      "options": null
+    },
+    {
+      "fieldname": "contact",
+      "fieldtype": "Link",
+      "label": "Contact Name",
+      "options": "Contact"
+    },
+    {
+      "fieldname": "email_sent_to",
+      "fieldtype": "Data",
+      "label": "Email sent to",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_7",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "customer_contact",
+      "fieldtype": "Small Text",
+      "label": "Customer Contact",
+      "options": null
+    },
+    {
+      "fieldname": "section_break_9",
+      "fieldtype": "Section Break",
+      "label": "Dispatch Information",
+      "options": null
+    },
+    {
+      "fieldname": "distance",
+      "fieldtype": "Float",
+      "label": "Distance",
+      "options": null
+    },
+    {
+      "fieldname": "estimated_arrival",
+      "fieldtype": "Datetime",
+      "label": "Estimated Arrival",
+      "options": null
+    },
+    {
+      "fieldname": "lat",
+      "fieldtype": "Float",
+      "label": "Latitude",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_19",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "uom",
+      "fieldtype": "Link",
+      "label": "UOM",
+      "options": "UOM"
+    },
+    {
+      "fieldname": "lng",
+      "fieldtype": "Float",
+      "label": "Longitude",
+      "options": null
+    },
+    {
+      "fieldname": "more_information_section",
+      "fieldtype": "Section Break",
+      "label": "More Information",
+      "options": null
+    },
+    {
+      "fieldname": "details",
+      "fieldtype": "Text Editor",
+      "label": "Details",
+      "options": null
+    }
+  ],
+  "Delivery Plan Detail": [
+    {
+      "fieldname": "hospital",
+      "fieldtype": "Link",
+      "label": "Hospital",
+      "options": "Customer"
+    },
+    {
+      "fieldname": "fulfillment_status",
+      "fieldtype": "Data",
+      "label": "Fulfillment Status",
+      "options": null
+    },
+    {
+      "fieldname": "deliver_before",
+      "fieldtype": "Datetime",
+      "label": "Deliver Before",
+      "options": null
+    },
+    {
+      "fieldname": "operation_order",
+      "fieldtype": "Link",
+      "label": "Operation Order",
+      "options": "Operation Order"
+    },
+    {
+      "fieldname": "case_type",
+      "fieldtype": "Link",
+      "label": "Case Type",
+      "options": "Case Type"
+    },
+    {
+      "fieldname": "column_break_4",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "direction",
+      "fieldtype": "Select",
+      "label": "Direction",
+      "options": "Deliver\nReturn"
+    },
+    {
+      "fieldname": "fulfillment_doc",
+      "fieldtype": "Data",
+      "label": "Fulfillment Doc",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_agent",
+      "fieldtype": "Link",
+      "label": "Delivery Agent",
+      "options": "Delivery Agent"
+    },
+    {
+      "fieldname": "wassenger_recipient",
+      "fieldtype": "Data",
+      "label": "Wassenger Recipient",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_a4",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "doctor",
+      "fieldtype": "Link",
+      "label": "Doctor",
+      "options": "Healthcare Practitioner"
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes",
+      "options": null
+    },
+    {
+      "fieldname": "reference",
+      "fieldtype": "Data",
+      "label": "Reference",
+      "options": null
+    },
+    {
+      "fieldname": "is_canceled",
+      "fieldtype": "Check",
+      "label": "Is Canceled",
+      "options": null
+    },
+    {
+      "fieldname": "is_redirect",
+      "fieldtype": "Check",
+      "label": "Is Redirect",
+      "options": null
+    },
+    {
+      "fieldname": "dest_order",
+      "fieldtype": "Link",
+      "label": "Destination Order",
+      "options": "Operation Order"
+    },
+    {
+      "fieldname": "section_break_15",
+      "fieldtype": "Section Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "redirect_deliveries_doc",
+      "fieldtype": "Link",
+      "label": "Redirect Deliveries Doc",
+      "options": "Redirect Deliveries"
+    },
+    {
+      "fieldname": "serials_information_section",
+      "fieldtype": "Section Break",
+      "label": "Serials Information",
+      "options": null
+    },
+    {
+      "fieldname": "section_break_21",
+      "fieldtype": "Section Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "serials",
+      "fieldtype": "Small Text",
+      "label": "Serials",
+      "options": null
+    },
+    {
+      "fieldname": "show_details",
+      "fieldtype": "Button",
+      "label": "Show Details",
+      "options": null
+    },
+    {
+      "fieldname": "serials_details",
+      "fieldtype": "HTML",
+      "label": "Serials Details",
+      "options": "<div id=\"data_table\"></div>"
+    },
+    {
+      "fieldname": "boxes_items_section",
+      "fieldtype": "Section Break",
+      "label": "Boxes Items",
+      "options": null
+    },
+    {
+      "fieldname": "serials_items_json",
+      "fieldtype": "Long Text",
+      "label": "Serials Items Json",
+      "options": null
+    }
+  ],
+  "Operation Order Item": [
+    {
+      "fieldname": "item_code",
+      "fieldtype": "Link",
+      "label": "Item Code",
+      "options": "Item"
+    },
+    {
+      "fieldname": "item_name",
+      "fieldtype": "Data",
+      "label": "Item Name",
+      "options": null
+    },
+    {
+      "fieldname": "serial_no",
+      "fieldtype": "Data",
+      "label": "Serial No",
+      "options": null
+    },
+    {
+      "fieldname": "warehouse",
+      "fieldtype": "Data",
+      "label": "Warehouse",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_5",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "case_type",
+      "fieldtype": "Link",
+      "label": "Case Type",
+      "options": "Case Type"
+    },
+    {
+      "fieldname": "qty",
+      "fieldtype": "Float",
+      "label": "Qty",
+      "options": null
+    },
+    {
+      "fieldname": "actual_qty",
+      "fieldtype": "Float",
+      "label": "Actual Qty",
+      "options": null
+    },
+    {
+      "fieldname": "extra_items_list",
+      "fieldtype": "Small Text",
+      "label": "Extra Items List",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_8",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes",
+      "options": null
+    },
+    {
+      "fieldname": "require_representative",
+      "fieldtype": "Check",
+      "label": "Rep?",
+      "options": null
+    },
+    {
+      "fieldname": "representative",
+      "fieldtype": "Data",
+      "label": "Representative",
+      "options": null
+    },
+    {
+      "fieldname": "fulfillment_data_section",
+      "fieldtype": "Section Break",
+      "label": "Transactional Data",
+      "options": null
+    },
+    {
+      "fieldname": "is_fulfilled",
+      "fieldtype": "Check",
+      "label": "Fulfilled",
+      "options": null
+    },
+    {
+      "fieldname": "fulfillment_doc",
+      "fieldtype": "Data",
+      "label": "Fulfillment Doc",
+      "options": null
+    },
+    {
+      "fieldname": "fulfillment_line",
+      "fieldtype": "Data",
+      "label": "Fulfillment Line",
+      "options": null
+    },
+    {
+      "fieldname": "fulfillment_stock_entry",
+      "fieldtype": "Data",
+      "label": "Fulfillment Stock Entry",
+      "options": null
+    },
+    {
+      "fieldname": "fulfillment_ste_row",
+      "fieldtype": "Data",
+      "label": "Fulfillment STE Row",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_11",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "is_delivered",
+      "fieldtype": "Check",
+      "label": "Delivered",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_agent",
+      "fieldtype": "Data",
+      "label": "Delivered By",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_time",
+      "fieldtype": "Datetime",
+      "label": "Delivery Time",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_doc_doctype",
+      "fieldtype": "Data",
+      "label": "Delivery Doc DocType",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_doc",
+      "fieldtype": "Data",
+      "label": "Delivery Doc",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_stock_entry",
+      "fieldtype": "Data",
+      "label": "Delivery Stock Entry",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_ste_row",
+      "fieldtype": "Data",
+      "label": "Delivery STE Row",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_17",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "is_collected",
+      "fieldtype": "Check",
+      "label": "Collected",
+      "options": null
+    },
+    {
+      "fieldname": "collected_by",
+      "fieldtype": "Data",
+      "label": "Collected By",
+      "options": null
+    },
+    {
+      "fieldname": "collection_time",
+      "fieldtype": "Datetime",
+      "label": "Collection Time",
+      "options": null
+    },
+    {
+      "fieldname": "collection_doc",
+      "fieldtype": "Data",
+      "label": "Collection Doc",
+      "options": null
+    },
+    {
+      "fieldname": "collection_stock_entry",
+      "fieldtype": "Data",
+      "label": "Collection Stock Entry",
+      "options": null
+    },
+    {
+      "fieldname": "collection_ste_row",
+      "fieldtype": "Data",
+      "label": "Collection STE Row",
+      "options": null
+    },
+    {
+      "fieldname": "is_consumable",
+      "fieldtype": "Check",
+      "label": "Is Consumable",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_22",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "is_returned",
+      "fieldtype": "Check",
+      "label": "Returned",
+      "options": null
+    },
+    {
+      "fieldname": "returned_by",
+      "fieldtype": "Data",
+      "label": "Returned By",
+      "options": null
+    },
+    {
+      "fieldname": "return_time",
+      "fieldtype": "Datetime",
+      "label": "Return Time",
+      "options": null
+    },
+    {
+      "fieldname": "return_doc",
+      "fieldtype": "Data",
+      "label": "Return Doc",
+      "options": null
+    },
+    {
+      "fieldname": "return_stock_entry",
+      "fieldtype": "Data",
+      "label": "Return Stock Entry",
+      "options": null
+    },
+    {
+      "fieldname": "return_ste_row",
+      "fieldtype": "Data",
+      "label": "Return STE Row",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_28",
+      "fieldtype": "Section Break",
+      "label": "Courier Information",
+      "options": null
+    },
+    {
+      "fieldname": "in_hospital",
+      "fieldtype": "Check",
+      "label": "In Hospital",
+      "options": null
+    },
+    {
+      "fieldname": "is_redirect",
+      "fieldtype": "Check",
+      "label": "is_redirect",
+      "options": null
+    },
+    {
+      "fieldname": "s_hospital",
+      "fieldtype": "Link",
+      "label": "Source Hospital",
+      "options": "Customer"
+    },
+    {
+      "fieldname": "s_reference",
+      "fieldtype": "Data",
+      "label": "Source Reference",
+      "options": null
+    },
+    {
+      "fieldname": "source_operation_order",
+      "fieldtype": "Link",
+      "label": "Source Operation Order",
+      "options": "Operation Order"
+    },
+    {
+      "fieldname": "cb_0001",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "is_assigned",
+      "fieldtype": "Check",
+      "label": "Agent Assigned",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_plan_agent",
+      "fieldtype": "Data",
+      "label": "Delivery Agent",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_plan",
+      "fieldtype": "Link",
+      "label": "Delivery Plan",
+      "options": "Delivery Plan"
+    },
+    {
+      "fieldname": "delivery_trip",
+      "fieldtype": "Data",
+      "label": "Delivery Trip",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_36",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "is_ret_assigned",
+      "fieldtype": "Check",
+      "label": "Return Assigned",
+      "options": null
+    },
+    {
+      "fieldname": "ret_delivery_agent",
+      "fieldtype": "Data",
+      "label": "Return Agent",
+      "options": null
+    },
+    {
+      "fieldname": "ret_delivery_plan",
+      "fieldtype": "Data",
+      "label": "Return Delivery Plan",
+      "options": null
+    },
+    {
+      "fieldname": "billing_and_consumption_and_compensation_section",
+      "fieldtype": "Section Break",
+      "label": "Billing And Consumption And Compensation",
+      "options": null
+    },
+    {
+      "fieldname": "consumption_delivery_note",
+      "fieldtype": "Link",
+      "label": "Consumption Delivery Note",
+      "options": "Delivery Note"
+    },
+    {
+      "fieldname": "column_break_60",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "compensation_request",
+      "fieldtype": "Link",
+      "label": "Compensation Request",
+      "options": "Compensation Request"
+    },
+    {
+      "fieldname": "column_break_62",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "compensation_issue_stock_entry",
+      "fieldtype": "Data",
+      "label": "Compensation Issue Stock Entry",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_64",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "compensation_issue_ste_row",
+      "fieldtype": "Data",
+      "label": "Compensation Issue STE Row",
+      "options": null
+    },
+    {
+      "fieldname": "control_actions_section",
+      "fieldtype": "Section Break",
+      "label": "Control Actions",
+      "options": null
+    },
+    {
+      "fieldname": "stop_delivery",
+      "fieldtype": "Check",
+      "label": "Stop Delivery",
+      "options": null
+    },
+    {
+      "fieldname": "stop_delivery_reason",
+      "fieldtype": "Data",
+      "label": "Reason",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_35",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "stop_fulfillment",
+      "fieldtype": "Check",
+      "label": "Stop Fulfillment",
+      "options": null
+    },
+    {
+      "fieldname": "stop_fulfillment_reason",
+      "fieldtype": "Data",
+      "label": "Reason",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_38",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "stop_all",
+      "fieldtype": "Check",
+      "label": "Stop All",
+      "options": null
+    },
+    {
+      "fieldname": "stop_all_reason",
+      "fieldtype": "Data",
+      "label": "Reason",
+      "options": null
+    },
+    {
+      "fieldname": "section_break_53",
+      "fieldtype": "Section Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "rep_removed",
+      "fieldtype": "Check",
+      "label": "Rep Removed",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_55",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "removed_by",
+      "fieldtype": "Data",
+      "label": "Removed By",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_57",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "removed_at",
+      "fieldtype": "Datetime",
+      "label": "Removed At",
+      "options": null
+    },
+    {
+      "fieldname": "reference_section",
+      "fieldtype": "Section Break",
+      "label": "Reference",
+      "options": null
+    },
+    {
+      "fieldname": "reference",
+      "fieldtype": "Data",
+      "label": "Reference",
+      "options": null
+    }
+  ],
+  "Operation Order Requirement": [
+    {
+      "fieldname": "case_group",
+      "fieldtype": "Link",
+      "label": "Case Group",
+      "options": "Case Type"
+    },
+    {
+      "fieldname": "case_type",
+      "fieldtype": "Link",
+      "label": "Case Type",
+      "options": "Case Type"
+    },
+    {
+      "fieldname": "require_representative",
+      "fieldtype": "Check",
+      "label": "Rep?",
+      "options": null
+    },
+    {
+      "fieldname": "representative",
+      "fieldtype": "Data",
+      "label": "Representative",
+      "options": null
+    },
+    {
+      "fieldname": "representative_report",
+      "fieldtype": "Link",
+      "label": "Representative Report",
+      "options": "Representative Report"
+    },
+    {
+      "fieldname": "case_count",
+      "fieldtype": "Int",
+      "label": "CC",
+      "options": null
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes",
+      "options": null
+    },
+    {
+      "fieldname": "extra_items_section",
+      "fieldtype": "Section Break",
+      "label": "Extra Items",
+      "options": null
+    },
+    {
+      "fieldname": "add_items",
+      "fieldtype": "Button",
+      "label": "Add Items",
+      "options": null
+    },
+    {
+      "fieldname": "extra_items_list",
+      "fieldtype": "Small Text",
+      "label": "Extra Items List",
+      "options": null
+    },
+    {
+      "fieldname": "fulfillment_data_section",
+      "fieldtype": "Section Break",
+      "label": "Fulfillment Data",
+      "options": null
+    },
+    {
+      "fieldname": "is_fulfilled",
+      "fieldtype": "Check",
+      "label": "Fulfilled",
+      "options": null
+    },
+    {
+      "fieldname": "fulfillment_doc",
+      "fieldtype": "Data",
+      "label": "Fulfillment Doc",
+      "options": null
+    },
+    {
+      "fieldname": "fulfillment_line",
+      "fieldtype": "Data",
+      "label": "Fulfillment Line",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_11",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "is_delivered",
+      "fieldtype": "Check",
+      "label": "Delivered",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_agent",
+      "fieldtype": "Data",
+      "label": "Delivered By",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_time",
+      "fieldtype": "Datetime",
+      "label": "Delivery Time",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_doc_doctype",
+      "fieldtype": "Data",
+      "label": "Delivery Doc DocType",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_doc",
+      "fieldtype": "Data",
+      "label": "Delivery Doc",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_17",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "is_collected",
+      "fieldtype": "Check",
+      "label": "Collected",
+      "options": null
+    },
+    {
+      "fieldname": "collected_by",
+      "fieldtype": "Data",
+      "label": "Collected By",
+      "options": null
+    },
+    {
+      "fieldname": "collection_time",
+      "fieldtype": "Data",
+      "label": "Collection Time",
+      "options": null
+    },
+    {
+      "fieldname": "collection_doc",
+      "fieldtype": "Data",
+      "label": "Collection Doc",
+      "options": null
+    },
+    {
+      "fieldname": "is_consumable",
+      "fieldtype": "Check",
+      "label": "Is Consumable",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_ftlgn",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "is_checked_in",
+      "fieldtype": "Check",
+      "label": "Checked In",
+      "options": null
+    },
+    {
+      "fieldname": "checked_in_by",
+      "fieldtype": "Data",
+      "label": "Checked In By",
+      "options": null
+    },
+    {
+      "fieldname": "checked_in_time",
+      "fieldtype": "Datetime",
+      "label": "Checked In Time",
+      "options": null
+    },
+    {
+      "fieldname": "check_in_doc",
+      "fieldtype": "Data",
+      "label": "Check In Doc",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_22",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "is_returned",
+      "fieldtype": "Check",
+      "label": "Returned",
+      "options": null
+    },
+    {
+      "fieldname": "returned_by",
+      "fieldtype": "Data",
+      "label": "Returned By",
+      "options": null
+    },
+    {
+      "fieldname": "return_time",
+      "fieldtype": "Datetime",
+      "label": "Return Time",
+      "options": null
+    },
+    {
+      "fieldname": "return_doc",
+      "fieldtype": "Data",
+      "label": "Return Doc",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_28",
+      "fieldtype": "Section Break",
+      "label": "Courier Information",
+      "options": null
+    },
+    {
+      "fieldname": "in_hospital",
+      "fieldtype": "Check",
+      "label": "In Hospital",
+      "options": null
+    },
+    {
+      "fieldname": "is_redirect",
+      "fieldtype": "Check",
+      "label": "is_redirect",
+      "options": null
+    },
+    {
+      "fieldname": "s_hospital",
+      "fieldtype": "Link",
+      "label": "Source Hospital",
+      "options": "Customer"
+    },
+    {
+      "fieldname": "s_reference",
+      "fieldtype": "Data",
+      "label": "Source Reference",
+      "options": null
+    },
+    {
+      "fieldname": "source_operation_order",
+      "fieldtype": "Link",
+      "label": "Source Operation Order",
+      "options": "Operation Order"
+    },
+    {
+      "fieldname": "cb_0001",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "is_assigned",
+      "fieldtype": "Check",
+      "label": "Agent Assigned",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_plan_agent",
+      "fieldtype": "Data",
+      "label": "Delivery Agent",
+      "options": null
+    },
+    {
+      "fieldname": "delivery_plan",
+      "fieldtype": "Link",
+      "label": "Delivery Plan",
+      "options": "Delivery Plan"
+    },
+    {
+      "fieldname": "delivery_trip",
+      "fieldtype": "Data",
+      "label": "Delivery Trip",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_36",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "is_ret_assigned",
+      "fieldtype": "Check",
+      "label": "Return Assigned",
+      "options": null
+    },
+    {
+      "fieldname": "ret_delivery_agent",
+      "fieldtype": "Data",
+      "label": "Return Agent",
+      "options": null
+    },
+    {
+      "fieldname": "ret_delivery_plan",
+      "fieldtype": "Data",
+      "label": "Return Delivery Plan",
+      "options": null
+    },
+    {
+      "fieldname": "control_actions_section",
+      "fieldtype": "Section Break",
+      "label": "Control Actions",
+      "options": null
+    },
+    {
+      "fieldname": "stop_delivery",
+      "fieldtype": "Check",
+      "label": "Stop Delivery",
+      "options": null
+    },
+    {
+      "fieldname": "stop_delivery_reason",
+      "fieldtype": "Data",
+      "label": "Reason",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_35",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "stop_fulfillment",
+      "fieldtype": "Check",
+      "label": "Stop Fulfillment",
+      "options": null
+    },
+    {
+      "fieldname": "stop_fulfillment_reason",
+      "fieldtype": "Data",
+      "label": "Reason",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_38",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "stop_all",
+      "fieldtype": "Check",
+      "label": "Stop All",
+      "options": null
+    },
+    {
+      "fieldname": "stop_all_reason",
+      "fieldtype": "Data",
+      "label": "Reason",
+      "options": null
+    },
+    {
+      "fieldname": "section_break_53",
+      "fieldtype": "Section Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "rep_removed",
+      "fieldtype": "Check",
+      "label": "Rep Removed",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_55",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "removed_by",
+      "fieldtype": "Data",
+      "label": "Removed By",
+      "options": null
+    },
+    {
+      "fieldname": "column_break_57",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "removed_at",
+      "fieldtype": "Datetime",
+      "label": "Removed At",
+      "options": null
+    },
+    {
+      "fieldname": "warehouses_information_section",
+      "fieldtype": "Section Break",
+      "label": "Warehouses Information",
+      "options": null
+    },
+    {
+      "fieldname": "source_warehouse",
+      "fieldtype": "Link",
+      "label": "Source Warehouse",
+      "options": "Warehouse"
+    },
+    {
+      "fieldname": "column_break_ibxge",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "delivery_transit_warehouse",
+      "fieldtype": "Link",
+      "label": "Delivery Transit Warehouse",
+      "options": "Warehouse"
+    },
+    {
+      "fieldname": "customer_warehouse",
+      "fieldtype": "Link",
+      "label": "Customer Warehouse",
+      "options": "Warehouse"
+    },
+    {
+      "fieldname": "return_transit_warehouse",
+      "fieldtype": "Link",
+      "label": "Return Transit Warehouse",
+      "options": "Warehouse"
+    },
+    {
+      "fieldname": "column_break_pf0us",
+      "fieldtype": "Column Break",
+      "label": null,
+      "options": null
+    },
+    {
+      "fieldname": "return_warehouse",
+      "fieldtype": "Link",
+      "label": "Return Warehouse",
+      "options": "Warehouse"
+    }
+  ]
+}
