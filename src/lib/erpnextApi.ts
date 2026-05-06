@@ -1,7 +1,7 @@
 import type { DeliveryTrip, DeliveryStop, DeliveryForm } from '../types/erpnext';
 
-// Use relative path to hit the Vite proxy in development, or the actual URL in production
-const API_URL = import.meta.env.DEV ? '' : (import.meta.env.VITE_ERPNEXT_URL || '');
+// We now use a custom Node.js server in production that proxies /api, so we always use relative path
+const API_URL = '';
 
 const getHeaders = () => {
   return {

@@ -1,0 +1,31 @@
+import express from 'express';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+const API_TARGET = process.env.VITE_ERPNEXT_URL || 'http://test.imsc-eg.com';
+
+// 1. Proxy API requests to ERPNext
+app.use('/api', createProxyMiddleware({
+  target: API_TARGET,
+  changeOrigin: true,
+  secure: false, // Allows proxying to HTTP from HTTPS
+  cookieDomainRewrite: "imsc-delivery.onrender.com" // Allows cookies to work cross-domain if needed
+}));
+
+// 2. Serve static frontend files from 'dist'
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// 3. Fallback for React Router
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT} and proxying /api to ${API_TARGET}`);
+});
