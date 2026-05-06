@@ -23,8 +23,7 @@ function App() {
     // Initialize OneSignal
     OneSignal.init({
       appId: "95d7eaa3-8b84-4cd3-a3b6-b31cb60bc8cf",
-      allowLocalhostAsSecureOrigin: true,
-      notifyButton: { enable: true }
+      allowLocalhostAsSecureOrigin: true
     }).then(() => {
       // Show native prompt if not subscribed
       OneSignal.Slidedown.promptPush();
