@@ -42,7 +42,7 @@ export default function ManualEntry() {
         );
         
         let allShortCodes: any[] = [];
-        fulfillmentDocs.forEach(doc => {
+        fulfillmentDocs.forEach((doc: any) => {
           if (doc && doc.short_codes) allShortCodes.push(...doc.short_codes);
         });
         setFulfillment({ short_codes: allShortCodes });
