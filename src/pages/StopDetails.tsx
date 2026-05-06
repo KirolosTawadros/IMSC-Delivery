@@ -23,13 +23,14 @@ export default function StopDetails() {
   // Background Prefetch for Operation Order (to make Manual Entry instant)
   useEffect(() => {
     if (fulfillmentId) {
-      getOperationOrderFromStockFulfillment(fulfillmentId)
-        .then(opOrderId => {
-          if (opOrderId) {
-            getOperationOrderDetails(opOrderId).catch(() => {});
-          }
-        })
-        .catch(() => {});
+      const ids = fulfillmentId.split(/[\n,]/).map((s: string) => s.trim()).filter(Boolean);
+      ids.forEach((id: string) => {
+        getOperationOrderFromStockFulfillment(id)
+          .then(opOrderId => {
+            if (opOrderId) getOperationOrderDetails(opOrderId).catch(() => {});
+          })
+          .catch(() => {});
+      });
     }
   }, [fulfillmentId]);
 

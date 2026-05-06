@@ -33,24 +33,43 @@ export default function ManualEntry() {
         const fulfillmentId = currentStop.documents;
         if (!fulfillmentId) throw new Error('No Stock Fulfillment linked to this stop.');
 
-        // 1.5 Get Stock Fulfillment Doc
-        const fulfillmentDoc = await getDocument('Stock Fulfillment', fulfillmentId).catch(() => null);
-        if (fulfillmentDoc) {
-          setFulfillment(fulfillmentDoc);
-        }
+        const fulfillmentIds = fulfillmentId.split(/[\n,]/).map((s: string) => s.trim()).filter(Boolean);
+        if (fulfillmentIds.length === 0) throw new Error('No valid Stock Fulfillment linked to this stop.');
 
-        // 2. Get Operation Order ID
-        const opOrderId = await getOperationOrderFromStockFulfillment(fulfillmentId);
-        if (!opOrderId) throw new Error('Could not find Operation Order for this Fulfillment.');
+        // 1.5 Get Stock Fulfillment Docs
+        const fulfillmentDocs = await Promise.all(
+          fulfillmentIds.map((id: string) => getDocument('Stock Fulfillment', id).catch(() => null))
+        );
+        
+        let allShortCodes: any[] = [];
+        fulfillmentDocs.forEach(doc => {
+          if (doc && doc.short_codes) allShortCodes.push(...doc.short_codes);
+        });
+        setFulfillment({ short_codes: allShortCodes });
+
+        // 2. Get Operation Order IDs
+        const opOrderIds = await Promise.all(
+          fulfillmentIds.map((id: string) => getOperationOrderFromStockFulfillment(id))
+        );
+        const uniqueOpOrderIds = [...new Set(opOrderIds.filter(Boolean))];
+        if (uniqueOpOrderIds.length === 0) throw new Error('Could not find Operation Order for this Fulfillment.');
 
         // 3. Get Operation Order Details
-        const fetchedOpOrder = await getOperationOrderDetails(opOrderId);
-        if (fetchedOpOrder && fetchedOpOrder.requirements) {
-          setOpOrder(fetchedOpOrder);
-          setCases(fetchedOpOrder.requirements);
+        const opOrders = await Promise.all(
+          uniqueOpOrderIds.map(id => getOperationOrderDetails(id as string))
+        );
+        
+        let allRequirements: any[] = [];
+        opOrders.forEach(op => {
+          if (op && op.requirements) allRequirements.push(...op.requirements);
+        });
+
+        if (allRequirements.length > 0) {
+          setOpOrder(opOrders[0]);
+          setCases(allRequirements);
           // Auto-check items that are already marked in backend
           const alreadyChecked = new Set<string>();
-          fetchedOpOrder.requirements.forEach((req: any) => {
+          allRequirements.forEach((req: any) => {
             if (currentStop!.direction === 'Deliver' && req.is_delivered) alreadyChecked.add(req.name);
             if (currentStop!.direction === 'Return' && req.is_collected) alreadyChecked.add(req.name);
           });
