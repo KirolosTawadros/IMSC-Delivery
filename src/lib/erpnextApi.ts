@@ -129,11 +129,19 @@ export async function login(usr: string, pwd: string) {
     body: JSON.stringify({ usr, pwd })
   });
   
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.message || 'Login failed');
+  const text = await response.text();
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch (err) {
+    console.error("Non-JSON Response:", text);
+    throw new Error(`Server returned HTML (Status ${response.status}). Check API URL or Proxy config.`);
   }
-  return await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Login failed');
+  }
+  return data;
 }
 
 export async function getLoggedUser() {

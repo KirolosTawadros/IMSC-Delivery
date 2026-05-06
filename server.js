@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const API_TARGET = process.env.VITE_ERPNEXT_URL || 'http://test.imsc-eg.com';
+const API_TARGET = process.env.VITE_ERPNEXT_URL || 'https://test.imsc-eg.com';
 
 // 1. Proxy API requests to ERPNext
 app.use('/api', createProxyMiddleware({
