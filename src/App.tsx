@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import OneSignal from 'react-onesignal';
 import Layout from './components/Layout';
 import Login from './pages/Login';
 import TodayTrips from './pages/TodayTrips';
@@ -17,6 +19,18 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 };
 
 function App() {
+  useEffect(() => {
+    // Initialize OneSignal
+    OneSignal.init({
+      appId: "95d7eaa3-8b84-4cd3-a3b6-b31cb60bc8cf",
+      allowLocalhostAsSecureOrigin: true,
+      notifyButton: { enable: true }
+    }).then(() => {
+      // Show native prompt if not subscribed
+      OneSignal.Slidedown.promptPush();
+    }).catch(e => console.error("OneSignal Init Error", e));
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>

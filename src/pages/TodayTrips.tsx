@@ -3,6 +3,8 @@ import { Package, Clock, MapPin, ChevronRight, RefreshCw } from 'lucide-react';
 import { getMyDeliveryTrips } from '../lib/erpnextApi';
 import type { DeliveryTrip } from '../types/erpnext';
 import { useCachedApi } from '../hooks/useCachedApi';
+import { useEffect } from 'react';
+import OneSignal from 'react-onesignal';
 
 export default function TodayTrips() {
   const navigate = useNavigate();
@@ -13,6 +15,13 @@ export default function TodayTrips() {
     () => getMyDeliveryTrips(driverId),
     [driverId]
   );
+
+  // Link driver ID to OneSignal so we can send push notifications directly to them
+  useEffect(() => {
+    if (driverId) {
+      OneSignal.login(driverId).catch(e => console.error("OneSignal login error", e));
+    }
+  }, [driverId]);
 
   const trips = data || [];
 
