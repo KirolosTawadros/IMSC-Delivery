@@ -21,8 +21,8 @@ app.use('/api', createProxyMiddleware({
 // 2. Serve static frontend files from 'dist'
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// 3. Fallback for React Router
-app.get('*', (req, res) => {
+// 3. Fallback for React Router (using regex to avoid Express path-to-regexp errors)
+app.get(/^(.*)$/, (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
