@@ -8,13 +8,21 @@ import ScanScreen from './pages/ScanScreen';
 import ManualEntry from './pages/ManualEntry';
 import CompletionScreen from './pages/CompletionScreen';
 
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const loggedUser = localStorage.getItem('logged_user');
+  if (!loggedUser) {
+    return <Navigate to="/login" replace />;
+  }
+  return <>{children}</>;
+};
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
         
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
           <Route index element={<Navigate to="/trips" replace />} />
           <Route path="trips" element={<TodayTrips />} />
           <Route path="trips/:tripId" element={<TripDetails />} />
