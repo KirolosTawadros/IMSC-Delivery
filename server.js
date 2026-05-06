@@ -10,13 +10,20 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const API_TARGET = process.env.VITE_ERPNEXT_URL || 'https://test.imsc-eg.com';
 
-// 1. Proxy API requests to ERPNext
-app.use('/api', createProxyMiddleware({
+// 1. Proxy API requests to ERPNext (Without stripping /api)
+const apiProxy = createProxyMiddleware({
   target: API_TARGET,
   changeOrigin: true,
   secure: false, // Allows proxying to HTTP from HTTPS
   cookieDomainRewrite: "imsc-delivery.onrender.com" // Allows cookies to work cross-domain if needed
-}));
+});
+
+app.use((req, res, next) => {
+  if (req.url.startsWith('/api')) {
+    return apiProxy(req, res, next);
+  }
+  next();
+});
 
 // 2. Serve static frontend files from 'dist'
 app.use(express.static(path.join(__dirname, 'dist')));
