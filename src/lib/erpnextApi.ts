@@ -1,7 +1,7 @@
 import type { DeliveryTrip, DeliveryStop, DeliveryForm } from '../types/erpnext';
 
-// Use relative path to hit the Vite proxy in development, or same-domain in production
-const API_URL = '';
+// Use relative path to hit the Vite proxy in development, or the actual URL in production
+const API_URL = import.meta.env.DEV ? '' : (import.meta.env.VITE_ERPNEXT_URL || '');
 
 const getHeaders = () => {
   return {
@@ -16,6 +16,7 @@ async function fetchWithTimeout(url: string, options: RequestInit = {}, timeout 
   
   try {
     const response = await fetch(url, {
+      credentials: 'include',
       ...options,
       signal: controller.signal
     });

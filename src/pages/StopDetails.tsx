@@ -83,19 +83,19 @@ export default function StopDetails() {
         {status === 'In Progress' && (
           <>
             <button 
-              onClick={() => navigate(`/trips/${tripId}/stops/${stopId}/scan`)}
+              onClick={() => navigate(`/trips/${tripId}/stops/${stopId}/manual`, { state: { stop } })}
               className="w-full py-4 bg-[var(--color-action-blue)] text-white font-semibold rounded-2xl shadow-md shadow-blue-200 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
             >
-              <ScanBarcode size={20} /> Scan Items
+              <Package size={20} /> Manual Entry
             </button>
             
             <div className="grid grid-cols-2 gap-3 mt-2">
               <button 
-                onClick={() => navigate(`/trips/${tripId}/stops/${stopId}/manual`, { state: { stop } })}
+                onClick={() => navigate(`/trips/${tripId}/stops/${stopId}/scan`)}
                 className="py-3 bg-white border border-slate-200 text-slate-700 font-medium rounded-xl active:bg-slate-50 transition-all flex flex-col items-center gap-1"
               >
-                <Package size={20} className="text-slate-400" />
-                <span className="text-sm">Manual Entry</span>
+                <ScanBarcode size={20} className="text-slate-400" />
+                <span className="text-sm">Scan Items</span>
               </button>
               <button className="py-3 bg-white border border-slate-200 text-slate-700 font-medium rounded-xl active:bg-slate-50 transition-all flex flex-col items-center gap-1">
                 <FileWarning size={20} className="text-[var(--color-warning-orange)]" />

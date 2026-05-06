@@ -27,7 +27,7 @@ export default function ManualEntry() {
           const stops = await getDeliveryStopsForTrip(tripId!);
           currentStop = stops.find((s: DeliveryStop) => s.name === stopId);
           if (!currentStop) throw new Error('Stop not found');
-          setStop(currentStop);
+          setStop(currentStop as DeliveryStop);
         }
 
         const fulfillmentId = currentStop.documents;

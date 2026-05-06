@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Package, Clock, MapPin, ChevronRight, RefreshCw } from 'lucide-react';
 import { getMyDeliveryTrips } from '../lib/erpnextApi';

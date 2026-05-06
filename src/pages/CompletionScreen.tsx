@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
-import { Camera, PenTool, CheckCircle2, RefreshCw } from 'lucide-react';
-import { submitDeliveryForm, updateDocument, completeDeliveryStop, clearApiCache } from '../lib/erpnextApi';
+import { Camera, PenTool, CheckCircle2 } from 'lucide-react';
+import { submitDeliveryForm, updateDocument, clearApiCache } from '../lib/erpnextApi';
 import type { DeliveryStop } from '../types/erpnext';
 import { useCachedApi } from '../hooks/useCachedApi';
 import { getDeliveryStopsForTrip, getDeliveryTripDetails } from '../lib/erpnextApi';

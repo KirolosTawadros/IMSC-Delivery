@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MapPin, ArrowRight, CheckCircle2, RefreshCw } from 'lucide-react';
+import { MapPin, ArrowRight, RefreshCw } from 'lucide-react';
 import { getDeliveryStopsForTrip } from '../lib/erpnextApi';
 import type { DeliveryStop } from '../types/erpnext';
 import { useCachedApi } from '../hooks/useCachedApi';
@@ -50,7 +49,7 @@ export default function TripDetails() {
 
       <div className="flex flex-col gap-3">
         {stops.filter(stop => {
-          const isDone = stop.status === 'Completed' || stop.status === 'Visited' || String(stop.visited) === '1' || stop.visited === true;
+          const isDone = stop.status === 'Completed' || stop.status === 'Visited' || String(stop.visited) === '1';
           return !isDone;
         }).map((stop, index) => {
           const isCompleted = false; // We filtered them out, so none are completed here
