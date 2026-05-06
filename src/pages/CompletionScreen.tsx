@@ -36,8 +36,10 @@ export default function CompletionScreen() {
   );
 
   const stop = passedStop || stops?.find((s) => s.name === stopId);
-  let fulfillmentId = stop?.documents || stop?.stock_fulfillment || '';
-  if (fulfillmentId === 'None') fulfillmentId = '';
+  let rawFulfillmentId = stop?.documents || stop?.stock_fulfillment || '';
+  if (rawFulfillmentId === 'None') rawFulfillmentId = '';
+  // The backend Link field can only hold ONE name, so we take the first valid ID
+  const fulfillmentId = rawFulfillmentId.split(/[\n,]/).map((s: string) => s.trim()).filter(Boolean)[0] || '';
 
   const [lastPayload, setLastPayload] = useState<any>(null);
 
