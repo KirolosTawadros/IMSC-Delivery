@@ -5,14 +5,7 @@ export function useCachedApi<T>(
   fetcher: () => Promise<T>,
   dependencies: any[] = []
 ) {
-  const [data, setData] = useState<T | null>(() => {
-    try {
-      const cached = localStorage.getItem(`imsc_cache_${key}`);
-      return cached ? JSON.parse(cached) : null;
-    } catch {
-      return null;
-    }
-  });
+  const [data, setData] = useState<T | null>(null);
   
   // If we have cached data, we don't block the UI with a full-screen loader
   const [loading, setLoading] = useState<boolean>(!data);
@@ -28,11 +21,7 @@ export function useCachedApi<T>(
     fetcher()
       .then((newData) => {
         if (!isMounted) return;
-        try {
-          localStorage.setItem(`imsc_cache_${key}`, JSON.stringify(newData));
-        } catch (e) {
-          console.warn('Could not save to localStorage', e);
-        }
+
         setData(newData);
         setError(null);
       })
