@@ -35,7 +35,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://test.imsc-eg.com',
+        target: 'https://test.imsc-eg.com',
         changeOrigin: true,
         secure: false,
       }

@@ -1,8 +1,8 @@
+import 'dotenv/config';
 import express from 'express';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -15,7 +15,15 @@ const apiProxy = createProxyMiddleware({
   target: API_TARGET,
   changeOrigin: true,
   secure: false, // Allows proxying to HTTP from HTTPS
-  cookieDomainRewrite: "imsc-delivery.onrender.com" // Allows cookies to work cross-domain if needed
+  cookieDomainRewrite: "imsc-delivery.onrender.com", // Allows cookies to work cross-domain if needed
+  on: {
+    proxyReq: (proxyReq, req, res) => {
+      console.log(`[Proxy] ${req.method} ${req.url}`);
+    },
+    error: (err, req, res) => {
+      console.error('[Proxy Error]', err);
+    }
+  }
 });
 
 app.use((req, res, next) => {
@@ -24,6 +32,7 @@ app.use((req, res, next) => {
   }
   next();
 });
+
 
 // 2. Serve static frontend files from 'dist'
 app.use(express.static(path.join(__dirname, 'dist')));

@@ -5,10 +5,20 @@ export function useCachedApi<T>(
   fetcher: () => Promise<T>,
   dependencies: any[] = []
 ) {
-  const [data, setData] = useState<T | null>(null);
+  // Initialize state from localStorage if available
+  const [data, setData] = useState<T | null>(() => {
+    try {
+      const cached = localStorage.getItem(`cache_${key}`);
+      return cached ? JSON.parse(cached) : null;
+    } catch {
+      return null;
+    }
+  });
   
-  // If we have cached data, we don't block the UI with a full-screen loader
+  // If we have cached data, loading is technically false for the initial render, 
+  // but we still want to indicate background fetching, so we'll add an `isFetching` state
   const [loading, setLoading] = useState<boolean>(!data);
+  const [isFetching, setIsFetching] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -17,6 +27,7 @@ export function useCachedApi<T>(
     if (!data) {
       setLoading(true);
     }
+    setIsFetching(true);
 
     fetcher()
       .then((newData) => {
@@ -24,6 +35,12 @@ export function useCachedApi<T>(
 
         setData(newData);
         setError(null);
+        // Save to localStorage for next time
+        try {
+          localStorage.setItem(`cache_${key}`, JSON.stringify(newData));
+        } catch (e) {
+          // Ignore quota errors
+        }
       })
       .catch((err) => {
         if (!isMounted) return;
@@ -35,7 +52,10 @@ export function useCachedApi<T>(
         }
       })
       .finally(() => {
-        if (isMounted) setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+          setIsFetching(false);
+        }
       });
 
     return () => {
@@ -44,5 +64,5 @@ export function useCachedApi<T>(
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 
-  return { data, loading, error, setData, setLoading };
+  return { data, loading: loading || isFetching, error, setData, setLoading };
 }

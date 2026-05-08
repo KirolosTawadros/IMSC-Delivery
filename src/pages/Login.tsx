@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Truck } from 'lucide-react';
-import { login, getLoggedUser, getLoggedDriverId } from '../lib/erpnextApi';
+import { login, getLoggedUser, getEmployeeDetails } from '../lib/erpnextApi';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,18 +17,33 @@ export default function Login() {
     
     try {
       await login(usr, pwd);
-      // Wait for login to set cookie, then fetch user
-      const user = await getLoggedUser();
-      if (user && user.message) {
-        localStorage.setItem('logged_user', user.message);
-        const driverId = await getLoggedDriverId(user.message);
-        if (driverId) {
-          localStorage.setItem('driver_id', driverId);
-        } else {
-          // Clear it just in case they log in with a user who isn't a driver
-          localStorage.removeItem('driver_id');
+      // Optimistic path: Assume `usr` is the email (which is true 99% of the time)
+      let actualUserId = usr;
+      let employeeDetails = await getEmployeeDetails(actualUserId);
+
+      // Fallback: If `usr` was a username (e.g. "admin"), getEmployeeDetails will return null.
+      // In that case, we fetch the canonical email from session and try again.
+      if (!employeeDetails) {
+        const user = await getLoggedUser();
+        if (user?.message && user.message !== usr) {
+          actualUserId = user.message;
+          employeeDetails = await getEmployeeDetails(actualUserId);
         }
       }
+
+      localStorage.setItem('logged_user', actualUserId);
+      
+      if (employeeDetails?.company) {
+        localStorage.setItem('user_company', employeeDetails.company);
+      }
+
+      if (employeeDetails?.name) {
+        localStorage.setItem('driver_id', employeeDetails.name);
+      } else {
+        // Clear it just in case they log in with a user who isn't a driver
+        localStorage.removeItem('driver_id');
+      }
+      
       navigate('/trips');
     } catch (err: any) {
       setError(err.message || 'Invalid login credentials');

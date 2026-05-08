@@ -9,7 +9,7 @@ export default function Layout() {
   const menuRef = useRef<HTMLDivElement>(null);
 
   const isTripsPage = location.pathname === '/trips';
-
+  
   // Close menu on click outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -24,6 +24,8 @@ export default function Layout() {
   const handleLogout = () => {
     localStorage.removeItem('logged_user');
     localStorage.removeItem('driver_id');
+    localStorage.removeItem('user_roles');
+    localStorage.removeItem('user_company');
     navigate('/login');
     setIsMenuOpen(false);
   };
@@ -79,8 +81,8 @@ export default function Layout() {
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <main className="flex-1 w-full max-w-md mx-auto p-4 flex flex-col gap-4">
+      {/* Main Content Area - Make it full width for dashboard, max-w-md for mobile views */}
+      <main className="flex-1 w-full mx-auto p-4 flex flex-col gap-4 max-w-md">
         <Outlet />
       </main>
       

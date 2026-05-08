@@ -152,18 +152,21 @@ export async function getLoggedUser() {
   return await response.json();
 }
 
-export async function getLoggedDriverId(userEmail: string): Promise<string | null> {
+export async function getEmployeeDetails(userEmail: string): Promise<{ name: string, company: string | null } | null> {
   try {
-    // Find Employee linked to the user email (Delivery Trip uses 'delivered_by' which points to Employee)
-    const employees = await fetchResource<any>('Employee', [['user_id', '=', userEmail]], ['name']);
+    const employees = await fetchResource<any>('Employee', [['user_id', '=', userEmail]], ['name', 'company']);
     if (employees.length > 0) {
-      return employees[0].name;
+      return {
+        name: employees[0].name,
+        company: employees[0].company || null
+      };
     }
   } catch (err) {
-    console.error("Failed to resolve Employee ID:", err);
+    console.error("Failed to fetch employee details:", err);
   }
   return null;
 }
+
 
 export async function getMyDeliveryTrips(driverId: string): Promise<DeliveryTrip[]> {
   // If driverId is provided, filter by delivered_by, otherwise just get open trips
@@ -258,4 +261,54 @@ export async function getOperationOrderFromStockFulfillment(fulfillmentId: strin
 
 export async function getOperationOrderDetails(orderId: string): Promise<any> {
   return getDocument<any>('Operation Order', orderId);
+}
+
+export type TrackingSessionPayload = {
+  sessionId: string;
+  tripId: string;
+  stopId?: string;
+  driverId: string;
+  driverName?: string;
+  company?: string;
+  direction?: string;
+};
+
+export type TrackingLocationPayload = {
+  sessionId: string;
+  driverId: string;
+  latitude: number;
+  longitude: number;
+  heading?: number | null;
+  speed?: number | null;
+  accuracy?: number | null;
+  recordedAt?: string;
+};
+
+async function postTracking(path: string, payload: Record<string, unknown>) {
+  const response = await fetchWithTimeout(path, {
+    method: 'POST',
+    headers: getHeaders(),
+    body: JSON.stringify(payload)
+  });
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Tracking API error (${response.status}): ${text || response.statusText}`);
+  }
+  return response.json();
+}
+
+export async function startTrackingSession(payload: TrackingSessionPayload) {
+  return postTracking('/tracking/session/start', payload);
+}
+
+export async function sendTrackingLocation(payload: TrackingLocationPayload) {
+  return postTracking('/tracking/location', payload);
+}
+
+export async function endTrackingSession(sessionId: string, driverId: string) {
+  return postTracking('/tracking/session/end', {
+    sessionId,
+    driverId,
+    endedAt: new Date().toISOString()
+  });
 }

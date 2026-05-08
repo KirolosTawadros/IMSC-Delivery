@@ -56,7 +56,7 @@ export default function TripDetails() {
           return (
             <div 
               key={stop.name}
-              onClick={() => navigate(`/trips/${tripId}/stops/${stop.name}`)}
+              onClick={() => navigate(`/trips/${tripId}/stops/${stop.name}/manual`)}
               className={`rounded-2xl p-4 border transition-all active:scale-[0.98] cursor-pointer
                 ${isCompleted ? 'bg-slate-50 border-slate-200' : 'bg-white border-slate-100 shadow-sm'}`}
             >

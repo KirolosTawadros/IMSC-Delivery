@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { Camera, PenTool, CheckCircle2 } from 'lucide-react';
-import { submitDeliveryForm, updateDocument, clearApiCache } from '../lib/erpnextApi';
+import { submitDeliveryForm, updateDocument, clearApiCache, endTrackingSession } from '../lib/erpnextApi';
 import type { DeliveryStop } from '../types/erpnext';
 import { useCachedApi } from '../hooks/useCachedApi';
 import { getDeliveryStopsForTrip, getDeliveryTripDetails } from '../lib/erpnextApi';
@@ -98,6 +98,21 @@ export default function CompletionScreen() {
       clearApiCache();
       localStorage.removeItem(`imsc_cache_stops_${tripId}`);
       localStorage.removeItem(`imsc_cache_tripDetails_${tripId}`);
+
+      // End external tracking session after successful ERP completion flow.
+      const rawSession = localStorage.getItem('imsc_active_tracking_session');
+      if (rawSession) {
+        try {
+          const session = JSON.parse(rawSession) as { sessionId?: string; driverId?: string };
+          if (session.sessionId && session.driverId) {
+            await endTrackingSession(session.sessionId, session.driverId);
+          }
+          localStorage.removeItem('imsc_active_tracking_session');
+        } catch (trackingErr) {
+          console.error('Failed to finalize tracking session:', trackingErr);
+          localStorage.removeItem('imsc_active_tracking_session');
+        }
+      }
       
       // Navigate back to trips or trip details
       navigate(`/trips/${tripId}`, { replace: true });

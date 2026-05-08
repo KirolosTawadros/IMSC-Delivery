@@ -20,7 +20,6 @@ export default function ManualEntry() {
   useEffect(() => {
     async function loadData() {
       try {
-        setLoading(true);
         // 1. Get Stop Details (use passed state if available, else fetch)
         let currentStop = stop;
         if (!currentStop) {
@@ -30,27 +29,54 @@ export default function ManualEntry() {
           setStop(currentStop as DeliveryStop);
         }
 
-        const fulfillmentId = currentStop.documents;
+        const fulfillmentId = currentStop.documents || currentStop.stock_fulfillment || currentStop.fulfillment_doc;
         if (!fulfillmentId) throw new Error('No Stock Fulfillment linked to this stop.');
+
+        // SWR: Check local cache first for instant loading
+        const cacheKey = `manual_entry_${fulfillmentId}`;
+        const cachedData = localStorage.getItem(cacheKey);
+        let hasCache = false;
+        if (cachedData) {
+          try {
+            const parsed = JSON.parse(cachedData);
+            setFulfillment(parsed.fulfillment);
+            setOpOrder(parsed.opOrder);
+            setCases(parsed.cases);
+            
+            // Auto-check items that are already marked in backend
+            const alreadyChecked = new Set<string>();
+            parsed.cases.forEach((req: any) => {
+              if (currentStop!.direction === 'Deliver' && req.is_delivered) alreadyChecked.add(req.name);
+              if (currentStop!.direction === 'Return' && req.is_collected) alreadyChecked.add(req.name);
+            });
+            setCheckedCases(alreadyChecked);
+            hasCache = true;
+            setLoading(false); // Instantly remove loading screen
+          } catch (e) {
+            // ignore cache parse errors
+          }
+        }
+
+        if (!hasCache) {
+          setLoading(true);
+        }
 
         const fulfillmentIds = fulfillmentId.split(/[\n,]/).map((s: string) => s.trim()).filter(Boolean);
         if (fulfillmentIds.length === 0) throw new Error('No valid Stock Fulfillment linked to this stop.');
 
-        // 1.5 Get Stock Fulfillment Docs
-        const fulfillmentDocs = await Promise.all(
-          fulfillmentIds.map((id: string) => getDocument('Stock Fulfillment', id).catch(() => null))
-        );
+        // 1.5 Get Stock Fulfillment Docs & 2. Get Operation Order IDs concurrently
+        const [fulfillmentDocs, opOrderIds] = await Promise.all([
+          Promise.all(fulfillmentIds.map((id: string) => getDocument('Stock Fulfillment', id).catch(() => null))),
+          Promise.all(fulfillmentIds.map((id: string) => getOperationOrderFromStockFulfillment(id)))
+        ]);
         
         let allShortCodes: any[] = [];
         fulfillmentDocs.forEach((doc: any) => {
           if (doc && doc.short_codes) allShortCodes.push(...doc.short_codes);
         });
-        setFulfillment({ short_codes: allShortCodes });
+        const newFulfillment = { short_codes: allShortCodes };
+        setFulfillment(newFulfillment);
 
-        // 2. Get Operation Order IDs
-        const opOrderIds = await Promise.all(
-          fulfillmentIds.map((id: string) => getOperationOrderFromStockFulfillment(id))
-        );
         const uniqueOpOrderIds = [...new Set(opOrderIds.filter(Boolean))];
         if (uniqueOpOrderIds.length === 0) throw new Error('Could not find Operation Order for this Fulfillment.');
 
@@ -67,6 +93,7 @@ export default function ManualEntry() {
         if (allRequirements.length > 0) {
           setOpOrder(opOrders[0]);
           setCases(allRequirements);
+          
           // Auto-check items that are already marked in backend
           const alreadyChecked = new Set<string>();
           allRequirements.forEach((req: any) => {
@@ -74,9 +101,25 @@ export default function ManualEntry() {
             if (currentStop!.direction === 'Return' && req.is_collected) alreadyChecked.add(req.name);
           });
           setCheckedCases(alreadyChecked);
+
+          // Save to persistent cache
+          try {
+            localStorage.setItem(cacheKey, JSON.stringify({
+              fulfillment: newFulfillment,
+              opOrder: opOrders[0],
+              cases: allRequirements
+            }));
+          } catch (e) {
+            // Ignore quota errors
+          }
         }
       } catch (err: any) {
-        setError(err.message || 'Failed to load case types');
+        // Only show error if we don't have cached data to show
+        if (cases.length === 0) {
+          setError(err.message || 'Failed to load case types');
+        } else {
+          console.warn('Background fetch failed, using cached cases', err);
+        }
       } finally {
         setLoading(false);
       }
@@ -105,7 +148,15 @@ export default function ManualEntry() {
   };
 
   if (loading) {
-    return <div className="p-8 text-center">Loading cases...</div>;
+    return (
+      <div className="flex flex-col h-[calc(100vh-100px)] items-center justify-center p-8 animate-in fade-in duration-300">
+        <div className="w-12 h-12 border-4 border-slate-100 border-t-[var(--color-action-blue)] rounded-full animate-spin mb-4"></div>
+        <h3 className="text-lg font-bold text-slate-700">Loading Cases</h3>
+        <p className="text-sm text-slate-400 text-center mt-2 max-w-[200px]">
+          Syncing stock and fulfillment requirements from the server...
+        </p>
+      </div>
+    );
   }
   if (error) return (
     <div className="p-8 text-center text-red-500 flex flex-col gap-4">
@@ -214,9 +265,10 @@ export default function ManualEntry() {
                               {sc.attr_val && <span className="text-slate-500 font-normal ml-1">({sc.attr_val})</span>}
                             </span>
                             {sc.codes && (
-                              <span className="text-slate-500 text-xs mt-1.5 font-mono bg-white px-2 py-0.5 rounded border border-slate-100 inline-block w-fit">
-                                {sc.codes}
-                              </span>
+                              <span 
+                                className="text-slate-500 text-xs mt-1.5 font-mono bg-white px-2 py-0.5 rounded border border-slate-100 inline-block w-fit"
+                                dangerouslySetInnerHTML={{ __html: sc.codes }}
+                              />
                             )}
                           </div>
                           <span className="text-[var(--color-action-blue)] font-bold text-xs bg-blue-50 px-2 py-1 rounded-md mt-0.5 flex-shrink-0 shadow-sm border border-blue-100">
