@@ -25,20 +25,6 @@ export default function TodayTrips() {
 
   const trips = data || [];
 
-  if (loading && trips.length === 0) {
-    return <div className="flex items-center justify-center p-8">Loading trips...</div>;
-  }
-
-  if (trips.length === 0) {
-    return (
-      <div className="text-center p-8 bg-white rounded-2xl shadow-sm mt-8 border border-slate-100">
-        <Package size={48} className="mx-auto text-slate-300 mb-4" />
-        <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-2">No trips assigned</h2>
-        <p className="text-slate-500">You don't have any delivery trips scheduled for today.</p>
-      </div>
-    );
-  }
-
   const handleClearCache = () => {
     // Clear only API cache keys to keep user logged in
     for (let i = localStorage.length - 1; i >= 0; i--) {
@@ -50,6 +36,35 @@ export default function TodayTrips() {
     // Refresh the page
     window.location.reload();
   };
+
+  if (loading && trips.length === 0) {
+    return <div className="flex items-center justify-center p-8">Loading trips...</div>;
+  }
+
+  if (trips.length === 0) {
+    return (
+      <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="flex justify-between items-end mb-2">
+          <h2 className="text-2xl font-bold tracking-tight flex items-center gap-2">
+            Today's Trips
+            {loading && <RefreshCw size={16} className="text-slate-400 animate-spin" />}
+          </h2>
+          <button 
+            onClick={handleClearCache}
+            className="text-xs bg-slate-100 text-slate-600 px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 active:scale-95 transition-transform border border-slate-200"
+          >
+            <RefreshCw size={12} />
+            Clear Cache
+          </button>
+        </div>
+        <div className="text-center p-8 bg-white rounded-2xl shadow-sm border border-slate-100">
+          <Package size={48} className="mx-auto text-slate-300 mb-4" />
+          <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-2">No trips assigned</h2>
+          <p className="text-slate-500">You don't have any delivery trips scheduled for today.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
