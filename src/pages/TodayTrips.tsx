@@ -39,6 +39,18 @@ export default function TodayTrips() {
     );
   }
 
+  const handleClearCache = () => {
+    // Clear only API cache keys to keep user logged in
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('cache_')) {
+        localStorage.removeItem(key);
+      }
+    }
+    // Refresh the page
+    window.location.reload();
+  };
+
   return (
     <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="flex justify-between items-end mb-2">
@@ -46,9 +58,18 @@ export default function TodayTrips() {
           Today's Trips
           {loading && <RefreshCw size={16} className="text-slate-400 animate-spin" />}
         </h2>
-        <span className="bg-[var(--color-primary)] text-white text-xs font-semibold px-2 py-1 rounded-full">
-          {trips.length} Active
-        </span>
+        <div className="flex items-center gap-2">
+          <button 
+            onClick={handleClearCache}
+            className="text-xs bg-slate-100 text-slate-600 px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 active:scale-95 transition-transform border border-slate-200"
+          >
+            <RefreshCw size={12} />
+            Clear Cache
+          </button>
+          <span className="bg-[var(--color-primary)] text-white text-xs font-semibold px-2.5 py-1.5 rounded-lg border border-[var(--color-primary)]">
+            {trips.length} Active
+          </span>
+        </div>
       </div>
 
       {trips.map((trip) => (
